@@ -161,3 +161,5 @@ python manage.py test
 ## 📄 License
 
 This project is developed for educational purposes under [MIT License](LICENSE).
+
+For any further Inquiry, email me: nazmussakib.net@gmail.com
