@@ -1,0 +1,30 @@
+{% extends 'booking/base.html' %}
+{% block title %}HBS — Home{% endblock %}
+{% block content %}
+<h2 class="mb-3">Available Hotels & Rooms</h2>
+{% if hotels %}
+  {% for h in hotels %}
+    <h4 class="mt-4">{{ h.name }}{% if h.city %} — {{ h.city }}{% endif %}</h4>
+    <div class="row row-cols-1 row-cols-md-3 g-3">
+      {% for r in h.rooms.all %}
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Room {{ r.number }} ({{ r.room_type }})</h5>
+            <p class="card-text mb-2">
+              Capacity: {{ r.capacity }}<br>
+              Price/night: ${{ r.price_per_night }}
+            </p>
+            <a class="btn btn-primary" href="{% url 'book_room' r.id %}">Book</a>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+        <p class="text-muted">No rooms added yet.</p>
+      {% endfor %}
+    </div>
+  {% endfor %}
+{% else %}
+  <p class="text-muted">No hotels yet. Use <code>/admin</code> to add some.</p>
+{% endif %}
+{% endblock %}

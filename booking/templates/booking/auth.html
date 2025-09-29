@@ -1,1 +1,43 @@
+{% extends 'booking/base.html' %}
+{% block title %}HBS — Login / Signup{% endblock %}
+{% block content %}
+<div class="row g-4">
+  <div class="col-md-6">
+    <div class="card"><div class="card-body">
+      <h4>Login</h4>
+      <form method="post">{% csrf_token %}
+        <input type="hidden" name="mode" value="login">
+        <input type="hidden" name="next" value="{{ next|default:'' }}">
+        <div class="mb-3">
+          <label class="form-label">Username</label>
+          <input class="form-control" name="username" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input class="form-control" type="password" name="password" required>
+        </div>
+        <button class="btn btn-primary">Login</button>
+      </form>
+    </div></div>
+  </div>
 
+  <div class="col-md-6">
+    <div class="card"><div class="card-body">
+      <h4>Signup</h4>
+      <form method="post">{% csrf_token %}
+        <input type="hidden" name="mode" value="signup">
+        <input type="hidden" name="next" value="{{ next|default:'' }}">
+        <div class="mb-3">
+          <label class="form-label">Username</label>
+          <input class="form-control" name="username" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input class="form-control" type="password" name="password" required>
+        </div>
+        <button class="btn btn-success">Create account</button>
+      </form>
+    </div></div>
+  </div>
+</div>
+{% endblock %}

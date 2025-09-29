@@ -1,0 +1,22 @@
+{% extends 'booking/base.html' %}
+{% block title %}Booking Confirmation{% endblock %}
+{% block content %}
+<h3>Booking Confirmation</h3>
+<div class="card mt-3">
+  <div class="card-body">
+    <p><b>Booking #:</b> {{ booking.id }}</p>
+    <p><b>Hotel:</b> {{ booking.room.hotel.name }} ({{ booking.room.hotel.city }})</p>
+    <p><b>Room:</b> {{ booking.room }}</p>
+    <p><b>Dates:</b> {{ booking.check_in }} → {{ booking.check_out }} ({{ booking.nights }} night{{ booking.nights|pluralize }})</p>
+    <p><b>Total:</b> ${{ booking.total_amount|floatformat:2 }}</p>
+
+    {% if booking.paid %}
+      <span class="badge text-bg-success">Already PAID</span>
+      <a class="btn btn-outline-secondary ms-2" href="{% url 'my_bookings' %}">Go to My bookings</a>
+    {% else %}
+      <a class="btn btn-primary" href="{% url 'pay_booking' booking.id %}">Pay now</a>
+      <a class="btn btn-outline-secondary ms-2" href="{% url 'my_bookings' %}">Pay later</a>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
