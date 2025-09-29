@@ -1,6 +1,3 @@
-Got it ✅ Here’s a professional **README.md** file tailored for your Hotel Booking System (HBS) project. You can copy-paste this directly into a file called `README.md` at the root of your GitHub repository:
-
----
 
 # 🏨 Hotel Booking System (HBS)
 
